@@ -6,6 +6,7 @@ void main() {
       home: Scaffold(
         backgroundColor: Colors.black38,
         appBar: AppBar(
+          centerTitle: true,
           title: const Text('Dice'),
           backgroundColor: Colors.blueGrey.shade800,
         ),
@@ -15,7 +16,14 @@ void main() {
   );
 }
 
-class DicePage extends StatelessWidget {
+class DicePage extends StatefulWidget {
+  const DicePage({super.key});
+
+  @override
+  State<DicePage> createState() => _DicePageState();
+}
+
+class _DicePageState extends State<DicePage> {
   var leftnum = 1;
 
   @override
@@ -23,16 +31,15 @@ class DicePage extends StatelessWidget {
     return Center(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        // ignore: prefer_const_literals_to_create_immutables
         children: [
-          // ignore: prefer_const_constructors
-
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
                 onPressed: () {
-                  leftnum = 5;
+                  setState(() {
+                    leftnum = 4;
+                  });
                 },
                 child: Image.asset('images/dice$leftnum.png'),
               ),
